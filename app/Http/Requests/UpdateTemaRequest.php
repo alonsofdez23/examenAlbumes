@@ -13,7 +13,7 @@ class UpdateTemaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateTemaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titulo' => 'required|string',
+            'anyo' => 'required|digits:4',
+            'duracion' => 'required|date_format:"i:s"',
         ];
     }
 }

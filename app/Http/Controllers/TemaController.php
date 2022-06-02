@@ -15,7 +15,9 @@ class TemaController extends Controller
      */
     public function index()
     {
-        //
+        return view('temas.index', [
+            'temas' => Tema::all(),
+        ]);
     }
 
     /**
@@ -25,7 +27,7 @@ class TemaController extends Controller
      */
     public function create()
     {
-        //
+        return view('temas.create');
     }
 
     /**
@@ -36,7 +38,11 @@ class TemaController extends Controller
      */
     public function store(StoreTemaRequest $request)
     {
-        //
+        $tema = new Tema($request->validated());
+        $tema->save();
+
+        return redirect()->route('temas.index')
+            ->with('success', "Tema $tema->titulo creado correctamente");
     }
 
     /**
@@ -47,7 +53,9 @@ class TemaController extends Controller
      */
     public function show(Tema $tema)
     {
-        //
+        return view('temas.show', [
+            'tema' => $tema,
+        ]);
     }
 
     /**
@@ -58,7 +66,9 @@ class TemaController extends Controller
      */
     public function edit(Tema $tema)
     {
-        //
+        return view('temas.edit', [
+            'tema' => $tema,
+        ]);
     }
 
     /**
@@ -70,7 +80,11 @@ class TemaController extends Controller
      */
     public function update(UpdateTemaRequest $request, Tema $tema)
     {
-        //
+        $tema->fill($request->validated());
+        $tema->save();
+
+        return redirect()->route('temas.index')
+            ->with('success', "Tema $tema->titulo editado correctamente");
     }
 
     /**
@@ -81,6 +95,9 @@ class TemaController extends Controller
      */
     public function destroy(Tema $tema)
     {
-        //
+        $tema->delete();
+
+        return redirect()->route('temas.index')
+            ->with('success', "Tema $tema->titulo borrado correctamente");
     }
 }
