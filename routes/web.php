@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\TemaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +22,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::resource('albumes', AlbumController::class)->parameters([
+    'albumes' => 'album'
+]);
+
+Route::resource('temas', TemaController::class);
 
 require __DIR__.'/auth.php';

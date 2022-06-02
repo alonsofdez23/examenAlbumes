@@ -10,4 +10,19 @@ class Album extends Model
     use HasFactory;
 
     protected $table = 'albumes';
+
+    protected $fillable = [
+        'titulo',
+        'anyo',
+    ];
+
+    /**
+     * The temas that belong to the Album
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function temas()
+    {
+        return $this->belongsToMany(Tema::class);
+    }
 }

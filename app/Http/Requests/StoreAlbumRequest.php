@@ -13,7 +13,7 @@ class StoreAlbumRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreAlbumRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titulo' => 'required|string',
+            'anyo' => 'required|digits:4'
         ];
     }
 }
