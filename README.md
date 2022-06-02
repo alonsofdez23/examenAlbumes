@@ -11,9 +11,9 @@ Se pide:
 
     - *temas (**id**, titulo, anyo, duracion)*
 
-    - *albumes_temas (**album_id, tema_id**)*
+    - *album_tema (**album_id, tema_id**)*
 
-    - *artistas_temas (**artista_id, tema_id**)*
+    - *artista_tema (**artista_id, tema_id**)*
 
     *Indicación*: la columna duración debe ser de tipo intervalo.
 
