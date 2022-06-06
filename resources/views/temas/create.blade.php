@@ -53,7 +53,8 @@
                                 <x-input
                                 id="duracion"
                                 class="block mt-1 w-full"
-                                type="text"
+                                type="time"
+                                step="1"
                                 name="duracion"
                                 placeholder="03:30"
                                 value="{{ old('duracion') }}" />

@@ -53,10 +53,11 @@
                                 <x-input
                                 id="duracion"
                                 class="block mt-1 w-full"
-                                type="text"
+                                type="time"
+                                step="1"
                                 name="duracion"
                                 placeholder="03:30"
-                                value="{{ old('duracion', $tema->duracion) }}" />
+                                value="{{ old('duracion', $tema->duracion->format('%H:%I:%S')) }}" />
                                 @error('duracion')
                                     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
                                         {{ $message }}

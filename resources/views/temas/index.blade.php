@@ -52,7 +52,7 @@
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     <div class="text-sm font-medium text-gray-900">
-                                                        {{ $tema->duracion }}
+                                                        {{ $tema->duracion->format('%H:%I:%S') }}
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 inline-flex">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\Interval;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +13,7 @@ class Tema extends Model
     protected $table = 'temas';
 
     protected $casts = [
-        'duracion' => 'interval',
+        'duracion' => Interval::class,
     ];
 
     protected $fillable = [

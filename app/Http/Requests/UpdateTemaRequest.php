@@ -26,7 +26,7 @@ class UpdateTemaRequest extends FormRequest
         return [
             'titulo' => 'required|string',
             'anyo' => 'required|digits:4',
-            'duracion' => 'required|date_format:"i:s"',
+            'duracion' => 'required|date_format:"H:i:s"',
         ];
     }
 }
