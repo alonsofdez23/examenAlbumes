@@ -91,7 +91,15 @@ class TemaController extends Controller
      */
     public function update(UpdateTemaRequest $request, Tema $tema)
     {
-        $tema->fill($request->validated());
+        $validados = $request->validated();
+
+        list($hours, $minutes, $seconds) = sscanf($validados['duracion'], '%d:%d:%d');
+        $duracion = new DateInterval(sprintf('PT%dH%dM%dS', $hours, $minutes, $seconds));
+
+        $tema->titulo = $validados['titulo'];
+        $tema->anyo = $validados['anyo'];
+        $tema->duracion = $duracion;
+
         $tema->save();
 
         return redirect()->route('temas.index')
