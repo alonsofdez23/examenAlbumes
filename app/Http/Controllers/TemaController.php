@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTemaRequest;
 use App\Http\Requests\UpdateTemaRequest;
 use App\Models\Tema;
+use DateInterval;
 
 class TemaController extends Controller
 {
@@ -38,7 +39,17 @@ class TemaController extends Controller
      */
     public function store(StoreTemaRequest $request)
     {
-        $tema = new Tema($request->validated());
+        $validados = $request->validated();
+
+        list($hours, $minutes, $seconds) = sscanf($validados['duracion'], '%d:%d:%d');
+        $duracion = new DateInterval(sprintf('PT%dH%dM%dS', $hours, $minutes, $seconds));
+
+        $tema = new Tema([
+            'titulo' => $validados['titulo'],
+            'anyo' => $validados['anyo'],
+            'duracion' => $duracion,
+        ]);
+
         $tema->save();
 
         return redirect()->route('temas.index')
