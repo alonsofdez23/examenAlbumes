@@ -23,9 +23,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('albumes', AlbumController::class)->parameters([
-    'albumes' => 'album'
-]);
+Route::resource('albumes', AlbumController::class)
+    ->parameters(['albumes' => 'album']);
 
 Route::resource('temas', TemaController::class);
 

@@ -14,7 +14,7 @@
                             <div class="flex flex-col justify-between p-4 leading-normal">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $tema->titulo }}</h5>
                                 <p class="mb-3 font-normal text-gray-700">{{ $tema->anyo }}</p>
-                                <p class="mb-3 font-normal text-gray-700">{{ $tema->duracion }}</p>
+                                <p class="mb-3 font-normal text-gray-700">{{ $tema->duracion->format('%H:%I:%S') }}</p>
 
                                 {{-- @foreach ($monografia->articulos as $articulo)
                                 <p class="mb-3 font-normal text-gray-700">{{ $articulo->titulo }}</p>
