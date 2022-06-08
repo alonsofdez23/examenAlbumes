@@ -23,9 +23,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('albumes', AlbumController::class)
-    ->parameters(['albumes' => 'album']);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('albumes', AlbumController::class)
+        ->parameters(['albumes' => 'album']);
 
-Route::resource('temas', TemaController::class);
+    Route::resource('temas', TemaController::class);
+});
 
 require __DIR__.'/auth.php';
