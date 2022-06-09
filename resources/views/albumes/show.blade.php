@@ -15,6 +15,14 @@
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $album->titulo }}</h5>
                                 <p class="mb-3 font-normal text-gray-700">{{ $album->anyo }}</p>
 
+                                <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Lista de temas</h3>
+                                @foreach ($temas as $tema)
+                                    <p class="mb-3 font-normal text-gray-700">{{ $tema->titulo }} {{ $tema->duracion->format('%H:%I:%S') }}</p>
+                                @endforeach
+
+                                <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Duración total</h3>
+                                <p class="mb-3 font-normal text-gray-700">{{ $album->temas_sum_duracion }}</p>
+
                                 {{-- @foreach ($monografia->articulos as $articulo)
                                 <p class="mb-3 font-normal text-gray-700">{{ $articulo->titulo }}</p>
                                 @endforeach

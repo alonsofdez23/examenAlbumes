@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAlbumRequest;
 use App\Http\Requests\UpdateAlbumRequest;
 use App\Models\Album;
+use DateInterval;
+use Illuminate\Support\Facades\DB;
 
 class AlbumController extends Controller
 {
@@ -53,8 +55,17 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
+        $albumSum = $album->withSum('temas', 'duracion')->find($album->id);
+
+        // dd(
+        //     DB::table('temas')
+        //         //->where('id', $album->id)
+        //         //->sum('duracion')
+        // );
+
         return view('albumes.show', [
-            'album' => $album,
+            'album' => $albumSum,
+            'temas' => $album->temas,
         ]);
     }
 
